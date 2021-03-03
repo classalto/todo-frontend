@@ -36,6 +36,7 @@ export default class SignUpPage extends Component {
                         Password:
                         <input value={this.state.password} onChange={this.handlePassword} />
                     </label>
+                    <button>Submit</button>
                 </form>
             </div>
         )
