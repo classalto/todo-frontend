@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { login } from '../api-utils.js';
 
-export class LoginPage extends Component {
+export default class LoginPage extends Component {
     state = {
         email: '',
         password: '',

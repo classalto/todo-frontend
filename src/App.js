@@ -5,11 +5,11 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { Header } from './components/Header.js';
+import Header from './components/Header.js';
 import { Home } from './Home/Home.js';
-import { LoginPage } from './AuthPages/LoginPage.js';
-import { SignUpPage } from './AuthPages/SignUpPage.js';
-import { ListPage } from './List/ListPage.js';
+import LoginPage from './AuthPages/LoginPage.js';
+import SignUpPage from './AuthPages/SignUpPage.js';
+import ListPage from './List/ListPage.js';
 import { getUser, setUser } from './localstorage-utils';
 import PrivateRoute from './components/PrivateRoute.js';
 
