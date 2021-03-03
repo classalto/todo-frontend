@@ -10,7 +10,7 @@ import { Home } from './Home/Home.js';
 import { LoginPage } from './AuthPages/LoginPage.js';
 import { SignUpPage } from './AuthPages/SignUpPage.js';
 import { ListPage } from './List/ListPage.js';
-import { getUser, setUser } from '../localstorage-utils';
+import { getUser, setUser } from './localstorage-utils';
 import PrivateRoute from './components/PrivateRoute.js';
 
 export default class App extends Component {
