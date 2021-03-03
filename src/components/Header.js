@@ -1,10 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
-export class header extends Component {
+export default class header extends Component {
     render() {
         return (
             <div>
-                <p>My Header</p>
+                <NavLink to="/">Home</NavLink>
+                {
+                    this.props.user && this.props.user.token && <>
+                    <NavLink to="/todos">Todos</NavLink>
+                    <button onClick={this.props.handleLogout}>Sign out</button>
+                    </>
+                }
+                {
+                    (!this.props.user || !this.props.user.token) && <>
+                    <NavLink to="/login">Log In</NavLink>
+                    <NavLink to="/signup">Sign Up</NavLink>
+                    </>
+                }
             </div>
         )
     }
