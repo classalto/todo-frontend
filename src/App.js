@@ -10,13 +10,29 @@ import { Home } from './Home/Home.js';
 import { LoginPage } from './AuthPages/LoginPage.js';
 import { SignUpPage } from './AuthPages/SignUpPage.js';
 import { ListPage } from './List/ListPage.js';
+import { getUser, setUser } from '../localstorage-utils';
+import PrivateRoute from './components/PrivateRoute.js';
 
 export default class App extends Component {
- 
+  state = {
+    user: getUser()
+  }
+
+  handleUserChange = (user) => {
+    this.setState({ user })
+    setUser(user);
+  }
+
+  handleLogout = () => {
+    this.handleUserChange();
+  }
+
   render() {
+    const { user } = this.state;
+
     return (
       <div>
-        <Header/>
+        <Header user={user} handleLogout={this.handleLogout} />
         <Router>
           <Switch>
             <Route 
@@ -24,20 +40,21 @@ export default class App extends Component {
               exact
               render={(routerProps) => <Home {...routerProps} />}
             />
-            <Route 
+            <PrivateRoute 
               path="/todos"
               exact
-              render={(routerProps) => <ListPage {...routerProps} />}
+              token={user && user.token}
+              render={(routerProps) => <ListPage user={user} {...routerProps} />}
             />
             <Route 
               path="/login"
               exact
-              render={(routerProps) => <LoginPage {...routerProps} />}
+              render={(routerProps) => <LoginPage handleUserChange={this.handleUserChange}{...routerProps} />}
             />
             <Route 
               path="/signup"
               exact
-              render={(routerProps) => <SignUpPage {...routerProps} />}
+              render={(routerProps) => <SignUpPage handleUserChange={this.handleUserChange} {...routerProps} />}
             />
           </Switch>
         </Router>
