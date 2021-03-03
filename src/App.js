@@ -5,12 +5,14 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import Header from './components/Header.js';
-import Home from './Home/Home.js';
-import LoginPage from './AuthPages/LoginPage.js';
-import SignUpPage from './AuthPages/SignUpPage.js';
+import { Header } from './components/Header.js';
+import { Home } from './Home/Home.js';
+import { LoginPage } from './AuthPages/LoginPage.js';
+import { SignUpPage } from './AuthPages/SignUpPage.js';
+import { ListPage } from './List/ListPage.js';
 
 export default class App extends Component {
+ 
   render() {
     return (
       <div>
@@ -43,6 +45,3 @@ export default class App extends Component {
     )
   }
 }
-
-
-export default App;
